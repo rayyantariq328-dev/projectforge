@@ -245,7 +245,7 @@ function App() {
           <h2>Get In Touch</h2>
           <p className="contact-subtitle">Have a project in mind or want to collaborate? Drop me a message!</p>
           
-          <form action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST" className="contact-form">
+          <form action="https://formspree.io/f/xdavbajv" method="POST" className="contact-form">
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input type="text" id="name" name="name" required placeholder="John Doe" />
