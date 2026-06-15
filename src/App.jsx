@@ -136,14 +136,34 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Fully Functional Form */}
       <section id="contact" className="contact-section">
         <div className="contact-container">
           <h2>Get In Touch</h2>
+          <p className="contact-subtitle">Have a project in mind or want to collaborate? Drop me a message!</p>
+          
+          <form action="https://formspree.io/f/xdavbajv" method="POST" className="contact-form">
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe" />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com" />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Hey Rayyan, love your portfolio..."></textarea>
+            </div>
+            
+            <button type="submit" className="submit-btn">Send Message 🚀</button>
+          </form>
+
+          <div className="contact-divider">or connect via</div>
+
           <div className="contact-buttons">
-            <a href="mailto:rayyantariq328@gmail.com" className="contact-btn gmail-btn">
-              📩 Gmail
-            </a>
             <a href="https://discord.com/users/rayyan_5820" target="_blank" rel="noreferrer" className="contact-btn discord-btn">
               💬 Discord
             </a>

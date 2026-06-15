@@ -321,7 +321,6 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Clean Unsplash Placeholder Assets for Display */
 .ecom-bg { 
   background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60'); 
 }
@@ -346,7 +345,7 @@ h2 {
   transition: color 0.2s ease;
 }
 
-/* Fully Centered Contact Area Styling */
+/* Fully Centered Contact Area Styling & Form Integrations */
 .contact-section {
   display: flex;
   justify-content: center;
@@ -362,6 +361,91 @@ h2 {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+}
+
+.contact-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 450px;
+  line-height: 1.5;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card-dark);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-sizing: border-box;
+  transition: background-color 0.4s ease;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-mode .form-group input,
+.light-mode .form-group textarea {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-divider {
+  margin: 25px 0 15px 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contact-buttons {
@@ -380,11 +464,11 @@ h2 {
   font-weight: 600;
   text-decoration: none;
   color: white;
-  background-color: #4f46e5;
+  background-color: #5865F2; /* Discord branding color */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-btn:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 8px 24px rgba(88, 101, 242, 0.4);
 }
