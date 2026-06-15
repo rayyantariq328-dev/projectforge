@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, Arial;
+}
+
+.app {
+  min-height: 100vh;
+  transition: 0.3s;
+}
+
+/* THEMES */
+.dark {
+  background: radial-gradient(circle at top, #111827, #0f172a);
+  color: white;
+}
+
+.light {
+  background: radial-gradient(circle at top, #ffffff, #e2e8f0);
+  color: #0f172a;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+}
+
+/* CENTER LAYOUT */
+.center {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+/* TITLE */
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* SUB TEXT */
+p {
+  opacity: 0.7;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+}
+
+/* CARD */
+.card {
+  margin-top: 20px;
+  padding: 20px;
+  width: 340px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+/* LIGHT MODE CARD FIX */
+.light .card {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

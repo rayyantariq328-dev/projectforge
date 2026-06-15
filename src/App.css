@@ -1,0 +1,390 @@
+/* Smooth scrolling transition */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   THEME CONFIGURATIONS & COMPONENT PALETTES
+   ========================================== */
+
+/* 1. Deep Dark Blue layout profiles */
+.app-container.dark-blue {
+  --bg-dark: #0b0f19;
+  --card-dark: #172033;
+  --text-primary: #ffffff;
+  --accent-blue: #3b82f6;
+  --text-muted: #94a3b8;
+  --hero-gradient: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #4c1d95 100%);
+  --navbar-bg: rgba(11, 15, 25, 0.8);
+  --btn-text: #1e3a8a;
+  --btn-bg: #ffffff;
+}
+
+/* 2. Light Theme Layout Profiles */
+.app-container.light-mode {
+  --bg-dark: #f8fafc;
+  --card-dark: #ffffff;
+  --text-primary: #0f172a;
+  --accent-blue: #2563eb;
+  --text-muted: #475569;
+  --hero-gradient: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  --navbar-bg: rgba(248, 250, 252, 0.8);
+  --btn-text: #ffffff;
+  --btn-bg: #2563eb;
+}
+
+/* 3. Slate Grey layout profiles */
+.app-container.slate-grey {
+  --bg-dark: #27272a;
+  --card-dark: #3f3f46;
+  --text-primary: #f4f4f5;
+  --accent-blue: #a1a1aa;
+  --text-muted: #d4d4d8;
+  --hero-gradient: linear-gradient(135deg, #18181b 0%, #52525b 100%);
+  --navbar-bg: rgba(39, 39, 42, 0.8);
+  --btn-text: #18181b;
+  --btn-bg: #f4f4f5;
+}
+
+/* 4. Emerald Cyber layout profiles */
+.app-container.emerald-cyber {
+  --bg-dark: #022c22;
+  --card-dark: #064e3b;
+  --text-primary: #f0fdf4;
+  --accent-blue: #10b981;
+  --text-muted: #a7f3d0;
+  --hero-gradient: linear-gradient(135deg, #022c22 0%, #065f46 50%, #115e59 100%);
+  --navbar-bg: rgba(2, 44, 34, 0.8);
+  --btn-text: #022c22;
+  --btn-bg: #10b981;
+}
+
+/* ==========================================
+   GLOBAL LAYOUT STYLES
+   ========================================== */
+
+.app-container {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+/* Navbar Interface Layout styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+  transition: background-color 0.4s ease;
+}
+
+/* Dynamic Glowing Gradient Text Effect for the Logo */
+.nav-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.4s ease;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Underline link animation hover lines */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-blue);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50px;
+  color: var(--text-primary);
+  transition: transform 0.3s ease, color 0.4s ease, background-color 0.3s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.15) rotate(15deg);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode .theme-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   COMPONENT STYLES & INTERFACES
+   ========================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Container Profiles */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-gradient);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+
+/* Skills Layout Setup */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: var(--card-dark);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  transition: background-color 0.4s ease;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.skill-title {
+  color: var(--text-primary);
+}
+
+.skill-percentage {
+  color: var(--accent-blue);
+  font-size: 0.95rem;
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.light-mode .progress-bar {
+  background: #cbd5e1;
+}
+
+@keyframes fillProgress {
+  from { width: 0%; }
+}
+
+.progress {
+  background: linear-gradient(90deg, var(--accent-blue), #8b5cf6);
+  height: 100%;
+  border-radius: 8px;
+  animation: fillProgress 1.5s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+}
+
+/* Project Cards Display Grid setup */
+.projects-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background: var(--card-dark);
+  padding: 24px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: left;
+  border: 1px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+}
+
+.project-card h3 {
+  color: var(--text-primary);
+  margin: 12px 0 8px 0;
+  font-size: 1.3rem;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-blue);
+}
+
+.project-img-placeholder {
+  height: 180px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Clean Unsplash Placeholder Assets for Display */
+.ecom-bg { 
+  background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60'); 
+}
+.ai-bg { 
+  background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60'); 
+}
+.task-bg { 
+  background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500&auto=format&fit=crop&q=60'); 
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.view-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+/* Fully Centered Contact Area Styling */
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background-color: #4f46e5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+}
